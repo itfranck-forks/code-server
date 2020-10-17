@@ -1,90 +1,77 @@
-# code-server
+# code-server &middot; [!["GitHub Discussions"](https://img.shields.io/badge/%20GitHub-%20Discussions-gray.svg?longCache=true&logo=github&colorB=purple)](https://github.com/cdr/code-server/discussions) [!["Join us on Slack"](https://img.shields.io/badge/join-us%20on%20slack-gray.svg?longCache=true&logo=slack&colorB=brightgreen)](https://cdr.co/join-community) [![Twitter Follow](https://img.shields.io/twitter/follow/CoderHQ?label=%40CoderHQ&style=social)](https://twitter.com/coderhq)
 
-[!["Open Issues"](https://img.shields.io/github/issues-raw/cdr/code-server.svg)](https://github.com/cdr/code-server/issues)
-[!["Latest Release"](https://img.shields.io/github/release/cdr/code-server.svg)](https://github.com/cdr/code-server/releases/latest)
-[![MIT license](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/cdr/code-server/blob/master/LICENSE)
-[![Discord](https://img.shields.io/discord/463752820026376202.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/zxSwN8Z)
+Run [VS Code](https://github.com/Microsoft/vscode) on any machine anywhere and access it in the browser.
 
-`code-server` is [VS Code](https://github.com/Microsoft/vscode) running on a remote server, accessible through the browser.
+![Screenshot](./doc/assets/screenshot.png)
 
-Try it out:
-```bash
-docker run -it -p 127.0.0.1:8443:8443 -v "${PWD}:/home/coder/project" codercom/code-server --allow-http --no-auth
-```
+## Highlights
 
-- Code on your Chromebook, tablet, and laptop with a consistent dev environment.
-	- If you have a Windows or Mac workstation, more easily develop for Linux.
-- Take advantage of large cloud servers to speed up tests, compilations, downloads, and more.
-- Preserve battery life when you're on the go.
-	- All intensive computation runs on your server.
-	- You're no longer running excess instances of Chrome.
-
-![Screenshot](/doc/assets/ide.png)
+- **Code everywhere**
+  - Code on your Chromebook, tablet, and laptop with a consistent development environment.
+  - Develop on a Linux machine and pick up from any device with a web browser.
+- **Server-powered**
+  - Take advantage of large cloud servers to speed up tests, compilations, downloads, and more.
+  - Preserve battery life when you're on the go as all intensive tasks run on your server.
+  - Make use of a spare computer you have lying around and turn it into a full development environment.
 
 ## Getting Started
 
-### Run over SSH
+For a full setup and walkthrough, please see [./doc/guide.md](./doc/guide.md).
 
-Use [sshcode](https://github.com/codercom/sshcode) for a simple setup.
+### Quick Install
 
-### Docker
+We have a [script](./install.sh) to install code-server for Linux, macOS and FreeBSD.
 
-See docker oneliner mentioned above. Dockerfile is at [/Dockerfile](/Dockerfile).
+It tries to use the system package manager if possible.
 
-### Binaries
+First run to print out the install process:
 
-1.  [Download a binary](https://github.com/cdr/code-server/releases) (Linux and OS X supported. Windows coming soon)
-2.  Start the binary with the project directory as the first argument
+```bash
+curl -fsSL https://code-server.dev/install.sh | sh -s -- --dry-run
+```
 
-    ```
-    code-server <initial directory to open>
-    ```
-	> You will be prompted to enter the password shown in the CLI
-	`code-server` should now be running at https://localhost:8443.
+Now to actually install:
 
-	> code-server uses a self-signed SSL certificate that may prompt your browser to ask you some additional questions before you proceed. Please [read here](doc/self-hosted/index.md) for more information.
+```bash
+curl -fsSL https://code-server.dev/install.sh | sh
+```
 
-For detailed instructions and troubleshooting, see the [self-hosted quick start guide](doc/self-hosted/index.md).
+The install script will print out how to run and start using code-server.
 
-Quickstart guides for [Google Cloud](doc/admin/install/google_cloud.md), [AWS](doc/admin/install/aws.md), and [DigitalOcean](doc/admin/install/digitalocean.md).
+### Manual Install
 
-How to [secure your setup](/doc/security/ssl.md).
+Docs on the install script, manual installation and docker image are at [./doc/install.md](./doc/install.md).
 
-## Development
+### Alpha Program 🐣
+We're working on a cloud platform to make deploying and managing code-server easier. If you don't want to worry about
 
-### Known Issues
+* TLS
+* Authentication
+* Port Forwarding
 
-- Creating custom VS Code extensions and debugging them doesn't work.
+consider [joining our alpha program](https://codercom.typeform.com/to/U4IKyv0W).
 
-### Future
-- **Stay up to date!** Get notified about new releases of code-server.
-  ![Screenshot](/doc/assets/release.gif)
-- Windows support.
-- Electron and Chrome OS applications to bridge the gap between local<->remote.
-- Run VS Code unit tests against our builds to ensure features work as expected.
+## FAQ
 
-### Extensions
-
-At the moment we can't use the official VSCode Marketplace. We've created a custom extension marketplace focused around open-sourced extensions. However, if you have access to the `.vsix` file, you can manually install the extension.
-
-## Telemetry
-
-Use the `--disable-telemetry` flag or set `DISABLE_TELEMETRY=true` to disable tracking ENTIRELY.
-
-We use data collected to improve code-server.
+See [./doc/FAQ.md](./doc/FAQ.md).
 
 ## Contributing
 
-Development guides are coming soon.
+See [./doc/CONTRIBUTING.md](./doc/CONTRIBUTING.md).
 
-## License
+## Hiring
 
-[MIT](LICENSE)
+We ([@cdr](https://github.com/cdr)) are looking for engineers to help maintain
+code-server, innovate on open source and streamline dev workflows.
 
-## Enterprise
+Our main office is in Austin, Texas. Remote is ok as long as
+you're in North America or Europe.
 
-Visit [our enterprise page](https://coder.com/enterprise) for more information about our enterprise offering.
+Please get in [touch](mailto:jobs@coder.com) with your resume/github if interested.
 
-## Commercialization
+We're also hiring someone specifically to help maintain code-server.
+See the listing [here](https://jobs.lever.co/coder/e40becde-2cbd-4885-9029-e5c7b0a734b8).
 
-If you would like to commercialize code-server, please contact contact@coder.com.
+## For Organizations
+
+Visit [our website](https://coder.com) for more information about remote development for your organization or enterprise.
